@@ -1,0 +1,204 @@
+:root {
+    --width-nav: 22%;
+    --height-area-text: 15vh;
+    --height-a-task: 8.5vh;
+    --space-left-content: 50px;
+}
+
+@media (max-width: 739px) {
+    .bars-more {
+        transition: all linear 0.2s;
+        width: 75%;
+        background-color: #82b3c9;
+    }
+
+    .name-tag {
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+
+    .number-todo {
+        margin: 15px auto;
+        width: 80%;
+    }
+
+    .nav-bar-pc {
+        display: none;
+    }
+
+    .text-tag {
+        padding-left: 5px;  
+    }
+
+    .pc {
+        display: none;
+    }
+}
+
+@media (min-width: 740px) {
+    #main {
+       /*  padding: 30px; */
+    }
+    
+    #header {
+        display: none;
+    }
+
+    .mobie {
+        display: none;
+    }
+
+    .body-layout {
+        display: flex;
+        flex-direction: row-reverse;
+        height: 100%;
+    }
+
+    /* Nav left */
+    .body-layout .nav-bar-pc {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: var(--width-nav);
+        /* min-width: 220px; */
+        height: 100%;
+        background-color: #82b3c9;
+    }
+
+    .nav-bar-pc .bars-more {
+        position: static;
+        transform: none;
+    }
+
+    .nav-bar-pc .account {
+        padding-bottom: 10px;
+    }
+
+    .nav-bar-pc .tag-note span{
+        font-weight: 600;
+        margin-left: -5px;
+        font-size: 18px;
+    }
+
+    .nav-bar-pc .tag-note i {
+        font-size: 18px;
+    }
+
+    .tag-pc.current {
+        background-color: #c8f3f3;
+    }
+
+    .main-content {
+        width: calc(100% - var(--width-nav));
+    }
+
+    /*Name tag*/
+    .name-tag {
+        height: var(--height-area-text);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: var(--width-nav);
+        background-color: #b3e5fc;
+        padding-left: var(--space-left-content);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .date {
+        font-weight: 550;
+        font-size: 20px;
+        letter-spacing: 0.8px;
+    }
+
+    .text-tag-pc {
+        font-weight: 600;
+    }
+
+    /*Number todo*/
+    .list-todo {
+        width: 100%;
+        margin: var(--height-area-text) 0;
+        padding: 0 var(--space-left-content);
+       /*  background-color: #fff; */
+        overflow: auto;
+    }
+
+    .list-todo::-webkit-scrollbar {
+        display: none;
+    }
+
+    .number-todo {
+        margin: 5px 0;
+        height: var(--height-a-task);
+    }
+
+    .number-todo:hover {
+        transform: none;
+        opacity: 1;
+        box-shadow: 2px 2px 8px rgb(123, 176, 219);
+    }
+
+    .delete {
+        line-height: var(--height-a-task);
+    }
+
+
+
+    /* Area Text*/
+    .area-text-pc {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        position: fixed;
+        bottom: 0;
+        left: var(--width-nav);
+        right: 0;
+        /* background-color: gray; */
+        background-color: #b3e5fc;
+        height: var(--height-area-text);
+    }
+
+    .area-text-pc form {
+        display: flex;
+        font-size: 12px;
+        background-color: forestgreen;
+        width: 100%;
+        margin: 0 var(--space-left-content);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .text-note-pc {
+        height: var(--height-a-task);
+        line-height: var(--height-a-task);
+        width: 100%;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        padding: 10px 0 10px 25px;
+    }
+
+    form .area-text-icon {
+        font-size: 10px;
+        display: flex;
+        line-height: var(--height-a-task);
+        background-color: #fff;
+        cursor: pointer;
+    }
+    
+    .area-text-icon i {
+        font-size: 24px;
+        padding: calc((var(--height-a-task) - 24px) / 2);
+    }
+
+    .area-text-icon i:hover {
+        background-color: red;
+    }
+    
+    body::-webkit-scrollbar {
+        display: none;
+    }
+}

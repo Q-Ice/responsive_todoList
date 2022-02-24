@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <script src="https://kit.fontawesome.com/c909c23c5d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="main">
+        <div id="header" class="item-container mobie">
+            <i class="icon-bar fas fa-bars"></i>
+            <div class="calendar-day">
+                <div class="day-month">
+                    <span style="line-height: 40px; font-weight: bold; font-size: 23px;">December 20</span>
+                </div>
+                <div class="calendar align-center">
+                    <i class="icon-calendar far fa-calendar-alt"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-layout">
+            <div class="main-content">
+                <!--day-Week-->
+                <div class="item-container all-week mobie">
+                    <div class="week">
+                        <div class="day-week">
+                            &nbsp;17<br>Mon
+                        </div>
+                        <div class="day-week">
+                            &nbsp;18<br>Tue
+                        </div>
+                        <div class="day-week">
+                            &nbsp;19<br>Wed
+                        </div>
+                        <div class="day-week current-day">
+                            20<br>Thu
+                        </div>
+                        <div class="day-week">
+                            &nbsp;21<br>&nbsp;Fri
+                        </div>
+                        <div class="day-week">
+                            &nbsp;22<br>Sat
+                        </div>
+                        <div class="day-week">
+                            &nbsp;23<br>Sun
+                        </div>
+                    </div>
+                </div>
+
+                <div id="overlay" class="hide"></div>
+                <!--Circle-Plus-->
+                <div class="item-container circle-plus mobie">
+                    <i class="icon-plus fas fa-plus"></i>
+                    <div class="area-create">
+                        <div class="text-div">
+                            <textarea name="text-note" class="text-note" placeholder="Write to do list" autofocus
+                                required></textarea>
+                        </div>
+                        <div class="other-note">
+                            <div class="note-other">
+                                <i class="icon-other fas fa-calendar-day"></i>
+                                <span>Today</span>
+                            </div>
+                            <div class="note-other">
+                                <i class="icon-other fas fa-inbox"></i>
+                                <span>Inbox</span>
+                            </div>
+                        </div>
+
+                        <div class="tag-more">
+                            <div>
+                                <i class="icon-tag fas fa-tag"></i>
+                                <i class="icon-tag far fa-flag"></i>
+                                <i class="icon-tag far fa-clock"></i>
+                                <i class="icon-tag ok fas fa-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="name-tag mobie">
+                    <i class="fas fa-calendar-day"></i>
+                    <span class="text-tag number-task-list">Today
+                        <span class="number-task">0</span>
+                    </span>
+                </p>
+
+                <!--Tag-Pc todo-->
+                <p class="name-tag pc">
+                    <span class="date">Wednesday, February 23</span>
+                    <span class="text-tag-pc number-task-list">
+                        My day
+                        <span class="number-task">0</span>
+                    </span>
+                </p>
+
+                <div class="list-todo">
+                    <!--  <div class="number-todo">
+                        <div class="box-check box-check1">
+                            <i class="check1 fa-solid fa-circle"></i>
+                            <i class="check2 fa-solid fa-circle-check"></i>
+                        </div>
+                        <p class="text-nt">Work 1</p>
+                        <span class="delete">&times</span>
+                    </div> -->
+                </div>
+
+                <div class="area-text-pc">
+                    <form action="">
+                        <input type="text" class="text-note-pc" placeholder="Add a task">
+                        <!-- <textarea name="text-note" class="text-note-pc" placeholder="Write to do list" autofocus required></textarea> -->
+                        <div class="area-text-icon">
+                            <i class="fas fa-tag"></i>
+                            <i class="far fa-clock"></i>
+                            <i class="ok-pc fas fa-check"></i>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="nav-bar mobie">
+                <div class="bars-more">
+                    <div class="account">
+                        <img class="img-account" src="/assets/img/user.jpg" alt="">
+                        <h3 class="name-account">Todo app</h3>
+                        <i class="icon-setting fas fa-cog setting"></i>
+                    </div>
+                    <hr style="margin-top: 5px">
+                    <div class="tag-note">
+                        <i class="icon-other fas fa-inbox"></i><span class="text-tag">Inbox</span>
+                    </div>
+                    <div class="tag-note">
+                        <i class="icon-other fas fa-calendar-day"></i><span class="text-tag">Today</span>
+                    </div>
+                    <div class="tag-note p-more">
+                        <i class="icon-other fas fa-project-diagram"></i><span class="text-tag">Projects</span>
+                        <i class="icon-down fas fa-chevron-down"></i>
+                        <div id="more-pj">
+                            <div class="name-project">
+                                <i class="icon-other2 fas fa-circle"></i>Project 1
+                            </div>
+                            <div class="name-project">
+                                <i class="icon-other2 fas fa-circle"></i>Project 2
+                            </div>
+                            <div class="manage-project name-project">
+                                <i class="icon-other2 fas fa-cog setting"></i>Manage Project
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-bar-pc">
+                <div class="bars-more">
+                    <div class="account">
+                        <img class="img-account" src="/assets/img/user.jpg" alt="">
+                        <h3 class="name-account">Todo app</h3>
+                    </div>
+                    <hr style="margin-top: 5px">
+                    
+                    <div class="tag-note tag-pc current">
+                        <i class="icon-other fa-regular fa-sun"></i>
+                        <span class="text-tag">My Day</span>
+                    </div>
+                    <div class="tag-note tag-pc">
+                        <i class="icon-other fa-regular fa-star"></i>
+                        <span class="text-tag">Important</span>
+                    </div>
+
+                    <div class="tag-note">
+                        <i class="icon-other fas fa-cog setting"></i>
+                        <span class="text-tag">Setting</span>
+                    </div>
+                    <div class="tag-note">
+                        <i class="icon-other fa-solid fa-arrow-right-from-bracket"></i>
+                        <span class="text-tag">Log Out</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./todo.js"></script>
+</body>
+
+</html>
