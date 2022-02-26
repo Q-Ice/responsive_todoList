@@ -228,9 +228,15 @@
     .list-tag-choose li {
         padding: 10px 20px;
         font-size: 18px;
+        border-radius: 5px;
     }
 
     .list-tag-choose li:hover {
         background-color: #ccc;
     }
+
+    .background-color-important, .number-todo.Important {
+        background-color: #74b5e0;
+    }
+
 }

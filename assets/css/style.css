@@ -275,7 +275,7 @@ body {
 
 
 .number-todo.done {
-    background-color: #a8bec9;
+    background-color: #a8bec9 !important;
 }
 
 .number-todo.done p{
@@ -429,6 +429,10 @@ body {
 
 .content-tag-pc {
     display: none;
+}
+
+.overlay-list-tag {
+    z-index: 2;
 }
 
 

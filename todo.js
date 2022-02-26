@@ -2,7 +2,7 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
-const list = $('.list-todo') // chuyen ve Obj chua type 
+const list = $('.list-todo')
 const tagImportant = $('.tag-important.content-tag-pc')
 const btnCircle = $('.circle-plus')
 const textTag = $('.number-task-list')
@@ -58,8 +58,9 @@ function addTodo(item) {
 
 function addTodoImportant() {
     const listTodoImportan = $$('.number-todo.Important')
+    let htmls = ''
     listTodoImportan.forEach(function(item) {
-        tagImportant.appendChild(item)
+        htmls += item.outerHTML
         item.onclick = function (e) {
             item.classList.toggle('done')
             update()
@@ -70,6 +71,8 @@ function addTodoImportant() {
             update()
         }
     })
+
+    tagImportant.innerHTML = htmls
 }
 
 
@@ -141,12 +144,15 @@ bookmarkList.forEach(function (item) {
     item.onclick = function (e) {
         if (item.innerText == 'My Day') {
             areaTextPc.setAttribute('mark', 'Day')
+            iconTag.classList.remove('background-color-important')
         }
         else  {
-           areaTextPc.setAttribute('mark', `${item.innerText}`)
+            areaTextPc.setAttribute('mark', `${item.innerText}`)
+            iconTag.classList.add('background-color-important')
         }
         listTagChoose.classList.add('hide')
-
+        overlay.classList.remove('overlay-list-tag')
+        overlay.classList.add('hide')
     }
 })
 
@@ -175,6 +181,10 @@ listTag.forEach((item, index) => {
         if (contentTag.classList.contains('tag-important')) {
             addTodoImportant()
         }
+        else {
+            tagImportant.innerHTML = '';
+        }
+
     }
 })
 
@@ -182,9 +192,7 @@ const iconTagPc = $('.icon-tag-pc')
 const listTagChoose = $('.list-tag-choose')
 iconTagPc.onclick = function(e) {
     listTagChoose.classList.remove('hide')
+    listTagChoose.classList.add('overlay-list-tag')
     overlay.classList.remove('hide')
-   /*  if (e.target != e.currentTarget) {
-        listTagChoose.classList.add('hide')
-        console.log('congragulation')
-    } */
+    overlay.classList.add('overlay-list-tag')
 }
