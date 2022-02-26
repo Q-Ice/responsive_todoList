@@ -208,7 +208,7 @@
     }
 
     .area-text-icon i:hover {
-        background-color: red;
+        background-color: rgb(73, 216, 73);
     }
     
     body::-webkit-scrollbar {
