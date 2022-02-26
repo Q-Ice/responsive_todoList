@@ -2,7 +2,8 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
-const list = $('.list-todo')
+const list = $('.list-todo') // chuyen ve Obj chua type 
+const tagImportant = $('.tag-important.content-tag-pc')
 const btnCircle = $('.circle-plus')
 const textTag = $('.number-task-list')
 const textTagPc = $('.text-tag-pc.number-task-list')
@@ -29,7 +30,8 @@ if (listTodo) {
 
 function addTodo(item) {
     const numberTodo = document.createElement('div')
-    numberTodo.classList.add('number-todo', `${item.status}`)
+    numberTodo.setAttribute('mark', `${item.mark}`)
+    numberTodo.classList.add('number-todo', `${item.status}`, `${item.mark}`)
     numberTodo.innerHTML = `
             <div class="box-check">
                 <i class="check1 fa-solid fa-circle"></i>
@@ -49,22 +51,41 @@ function addTodo(item) {
         update()
     }
 
+    
     list.appendChild(numberTodo)
     update()
 }
 
+function addTodoImportant() {
+    const listTodoImportan = $$('.number-todo.Important')
+    listTodoImportan.forEach(function(item) {
+        tagImportant.appendChild(item)
+        item.onclick = function (e) {
+            item.classList.toggle('done')
+            update()
+        }
+
+        item.querySelector('.delete').onclick = function (e) {
+            item.remove()
+            update()
+        }
+    })
+}
+
+
 function update() {
-    const list = $$('.number-todo')
+    const numberTodo = $$('.number-todo')
     const listTodo = []
-    list.forEach(function (item) {
+    numberTodo.forEach(function (item) {
         listTodo.push({
             text: item.querySelector('.text-nt').innerText,
-            status: item.classList.contains('done') ? 'done' : undefined
+            status: item.classList.contains('done') ? 'done' : undefined,
+            mark: item.getAttribute('mark')
         })
     })
 
     localStorage.setItem('listTodo', JSON.stringify(listTodo))
-    const html2 = `${tagNameCurrent} <span class="number-task">${listTodo.length}</span>`
+    const html2 = `${tagNameCurrent} <span class="number-task">${list.children.length}</span>`
     textTag.innerHTML = html2;
     textTagPc.innerHTML = html2;
 }
@@ -72,7 +93,7 @@ function update() {
 submit.onclick = function (e) {
     const text = areaText.value.trim()
     if (text != '') {
-        addTodo({ text, status: undefined })
+        addTodo({ text, status: undefined, mark: undefined})
     }
 
     areaText.value = ''
@@ -88,9 +109,10 @@ navBar.onclick = function () {
 overlay.onclick = function (e) {
     if (e.target === e.currentTarget) {
         barMore.classList.remove('fadeIn')
-        overlay.classList.add('hide')
         areaCreate.classList.remove('plusAmination')
         btnCircle.style.zIndex = '1';
+        listTagChoose.classList.add('hide')
+        overlay.classList.add('hide')
     }
 }
 
@@ -103,10 +125,66 @@ btnCircle.onclick = function () {
 /* Pc */
 submitPc.onclick = function (e) {
     const text = areaTextPc.value.trim()
+    const mark = areaTextPc.getAttribute('mark') || 'Day'
     if (text != '') {
-        addTodo({ text, status: undefined })
+        addTodo({ text, status: undefined, mark})
     }
 
     areaTextPc.value = ''
     areaTextPc.focus()
+}
+
+const iconTag = $('.icon-tag-pc')
+const bookmarkList = $$('.list-tag-choose li')
+
+bookmarkList.forEach(function (item) {
+    item.onclick = function (e) {
+        if (item.innerText == 'My Day') {
+            areaTextPc.setAttribute('mark', 'Day')
+        }
+        else  {
+           areaTextPc.setAttribute('mark', `${item.innerText}`)
+        }
+        listTagChoose.classList.add('hide')
+
+    }
+})
+
+
+const listTag = $$('.tag-pc')
+const listContentTag = $$('.content-tag-pc')
+
+listTag.forEach((item, index) => {
+    const contentTag = listContentTag[index]
+    item.onclick = (e) => {
+        $('.tag-pc.current').classList.remove('current')
+        $('.content-tag-pc.current').classList.remove('current')
+
+        item.classList.add('current')
+        contentTag.classList.add('current')
+
+        $('.text-tag-pc.number-task-list').innerHTML = `${item.querySelector('.text-tag').innerText}`
+
+        if (contentTag.classList.contains('list-todo')) {
+            const span = document.createElement('span')
+            span.classList.add('number-task')
+            span.innerHTML = `${list.children.length}`
+            $('.text-tag-pc.number-task-list').appendChild(span)
+        }
+
+        if (contentTag.classList.contains('tag-important')) {
+            addTodoImportant()
+        }
+    }
+})
+
+const iconTagPc = $('.icon-tag-pc')
+const listTagChoose = $('.list-tag-choose')
+iconTagPc.onclick = function(e) {
+    listTagChoose.classList.remove('hide')
+    overlay.classList.remove('hide')
+   /*  if (e.target != e.currentTarget) {
+        listTagChoose.classList.add('hide')
+        console.log('congragulation')
+    } */
 }
