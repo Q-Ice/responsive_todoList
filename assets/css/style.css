@@ -102,6 +102,7 @@ body {
     position: relative;
     align-items: center;
     padding-top: 10px;
+    margin-left: 10px;
 }
 
 .img-account {
@@ -123,6 +124,7 @@ body {
 
 .tag-note .icon-other {
     padding: 10px;
+    padding-left: 20px;
     font-size: 20px;
 }
 
