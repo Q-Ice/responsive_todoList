@@ -1,5 +1,5 @@
 :root {
-    --width-nav: 22%;
+    --width-nav: 20%;
     --height-area-text: 15vh;
     --height-a-task: 8.5vh;
     --space-left-content: 50px;
@@ -81,7 +81,8 @@
     }
 
     .nav-bar-pc .account {
-        padding-bottom: 10px;
+        padding: 10px 0;
+        margin-top: 6px;
     }
 
     .nav-bar-pc .tag-note span{
@@ -157,6 +158,11 @@
     .delete {
         line-height: var(--height-a-task);
     }
+    
+    .number-task {
+        margin-left: 2px;
+        border-radius: 50%;
+    }
 
 
 
@@ -208,7 +214,7 @@
     }
 
     .area-text-icon i:hover {
-        background-color: rgb(73, 216, 73);
+        background-color: red;
     }
     
     body::-webkit-scrollbar {
